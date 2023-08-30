@@ -5,7 +5,7 @@ name: startingpoint
 
 # The native container image to build on top of.
 # Warning: Non-uBlue images might not work properly, due to missing components.
-base-image: ghcr.io/ublue-os/silverblue-main
+base-image: ghcr.io/ublue-os/silverblue-nvidia
 
 # What Fedora version to use. Use an explicit version or `latest`.
 # If you use `latest`, you will be automatically updated to the next major
@@ -47,6 +47,7 @@ rpm:
   # which greatly simplifies future maintenance of your custom recipe.
   repos:
     # Example (which also demonstrates version number expansion):
+    - https://copr.fedorainfracloud.org/coprs/lukenukem/asus-kernel/repo/fedora-%FEDORA_VERSION%/lukenukem-asus-kernel-fedora-%FEDORA_VERSION%.repo
     # - https://copr.fedorainfracloud.org/coprs/atim/starship/repo/fedora-%FEDORA_VERSION%/atim-starship-fedora-%FEDORA_VERSION%.repo
 
   # These RPMs will be installed from your enabled repositories (Fedora's own
@@ -61,6 +62,12 @@ rpm:
     # apps and binaries require it, so it's a good idea to always include it
     # if you ever download or compile any custom software on your machine.
     - libadwaita
+    # rog kernel
+    - kernel
+    - kernel-core
+    - kernel-devel
+    - kernel-modules
+    - kernel-modules-extra
     # Add your own below:
     # Example:
     # - tilix
